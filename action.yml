@@ -1,0 +1,46 @@
+name: Push to tangled.sh
+description: Push code to a tangled.sh mirror repository
+
+inputs:
+  repo:
+    description: The name of the tangled.sh repo to push to
+    required: true
+  knot:
+    description: Hostname of the knot to push to
+    default: tangled.sh
+  ssh-key:
+    description: Private SSH key with write access to the tangled.sh repo
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4.1.7
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: sync tangled
+      shell: bash
+      env:
+        TANGLED_SSH_KEY: ${{ inputs.ssh-key }}
+      run: |
+        set -euo pipefail
+        # Turn off strict SSH key checking
+        mkdir -p ~/.ssh
+        echo "Host *
+          StrictHostKeyChecking no
+          UserKnownHostsFile=/dev/null" > ~/.ssh/config
+
+        # Write SSH key to disk
+        echo "$TANGLED_SSH_KEY" > ~/.ssh/tangled_key
+        chmod 600 ~/.ssh/tangled_key
+
+        # Configure SSH to use the key for tangled.sh
+        echo "Host tangled.sh
+          IdentityFile ~/.ssh/tangled_key" >> ~/.ssh/config
+
+        chmod 600 ~/.ssh/config
+
+        git remote add tangled git@${{ inputs.knot }}:${{ inputs.repo }}
+        git push -f --all tangled
+        git push -f --tags tangled
