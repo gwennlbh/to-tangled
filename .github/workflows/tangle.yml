@@ -2,6 +2,7 @@ name: Tangle
 
 on:
   push: {}
+  workflow_dispatch: {}
 
 jobs:
   tangle:
