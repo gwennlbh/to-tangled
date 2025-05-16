@@ -46,4 +46,5 @@ runs:
         chmod 600 ~/.ssh/config
 
         git remote add tangled git@${{ inputs.knot }}:${{ inputs.repo }}
-        git push --mirror tangled
+        git push -f --all tangled
+        git push -f --tags tangled
