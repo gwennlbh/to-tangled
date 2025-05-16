@@ -1,5 +1,9 @@
 name: Push to tangled.sh
 description: Push code to a tangled.sh mirror repository
+author: Gwenn Le Bihan
+branding:
+  icon: activity
+  color: white
 
 inputs:
   repo:
