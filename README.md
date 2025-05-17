@@ -11,6 +11,23 @@ push to a tangled.sh mirror
 
 ## Quickstart
 
+### One-click setup
+
+If:
+- you're on Linux,
+- you've created a SSH key with just `ssh-keygen` without any flags,
+- you have [the `gh` CLI](https://cli.github.com) installed, and
+- you're on the root of your repository
+
+```bash
+gh secret set TANGLED_KEY < ~/.ssh/id_ed25519
+mkdir -p .github/workflows
+echo -e 'name: Tangle\n\non:\n  push: {}\n  workflow_dispatch: {}\n\njobs:\n  tangle:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: gwennlbh/to-tangled@v0.3\n        with:\n          repo: yourself.bsky.social/your-repo\n          ssh-key: ${{ secrets.TANGLED_KEY }}\n' > .github/workflows/tangle.yml
+# don't forget to change yourself.bsky.social/your-repo to the tangled.sh repo before committing this!!!
+```
+
+### Step by step
+
 1. Create a secret named `TANGLED_KEY` that has your SSH private key
 
 Quick copy if you've created a key with just `ssh-keygen` without any flags:
