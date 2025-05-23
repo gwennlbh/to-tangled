@@ -47,7 +47,7 @@ pbcopy < ~/.ssh/id_ed25519
 (wind*ws)
 
 ```
-cat ~/.ssh/id_ed25519 > clip.exe
+cat ~/.ssh/id_ed25519 | clip.exe
 ```
 
 Go to your github repo's settings > secrets > actions > repository secrets
