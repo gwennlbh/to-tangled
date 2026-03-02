@@ -1,5 +1,5 @@
-name: Push to tangled.sh
-description: Push code to a tangled.sh mirror repository
+name: Push to tangled.org
+description: Push code to a tangled.org mirror repository
 author: Gwenn Le Bihan
 branding:
   icon: activity
@@ -7,13 +7,13 @@ branding:
 
 inputs:
   repo:
-    description: The name of the tangled.sh repo to push to
+    description: The name of the tangled.org repo to push to
     required: true
   knot:
     description: Hostname of the knot to push to
-    default: tangled.sh
+    default: tangled.org
   ssh-key:
-    description: Private SSH key with write access to the tangled.sh repo
+    description: Private SSH key with write access to the tangled.org repo
     required: true
 
 runs:
@@ -40,10 +40,13 @@ runs:
         chmod 600 ~/.ssh/tangled_key
 
         # Configure SSH to use the key for tangled.sh
-        echo "Host tangled.sh
+        echo "Host tangled.org
           IdentityFile ~/.ssh/tangled_key" >> ~/.ssh/config
 
         chmod 600 ~/.ssh/config
 
         git remote add tangled git@${{ inputs.knot }}:${{ inputs.repo }}
         git push --mirror tangled
+
+
+
