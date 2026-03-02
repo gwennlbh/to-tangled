@@ -22,7 +22,7 @@ If:
 ```bash
 gh secret set TANGLED_KEY < ~/.ssh/id_ed25519
 mkdir -p .github/workflows
-echo -e 'name: Tangle\n\non:\n  push: {}\n  workflow_dispatch: {}\n\njobs:\n  tangle:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: gwennlbh/to-tangled@v0.3\n        with:\n          repo: yourself.bsky.social/your-repo\n          ssh-key: ${{ secrets.TANGLED_KEY }}\n' > .github/workflows/tangle.yml
+echo -e 'name: Tangle\n\non:\n  push: {}\n  workflow_dispatch: {}\n\njobs:\n  tangle:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: gwennlbh/to-tangled@v0.4\n        with:\n          repo: yourself.bsky.social/your-repo\n          ssh-key: ${{ secrets.TANGLED_KEY }}\n' > .github/workflows/tangle.yml
 # don't forget to change yourself.bsky.social/your-repo to the tangled.sh repo before committing this!!!
 ```
 
@@ -67,7 +67,7 @@ jobs:
   tangle:
     runs-on: ubuntu-latest
     steps:
-      - uses: gwennlbh/to-tangled@v0.3
+      - uses: gwennlbh/to-tangled@v0.4
         with:
           repo: yourself.bsky.social/your-repo
           ssh-key: ${{ secrets.TANGLED_KEY }}
