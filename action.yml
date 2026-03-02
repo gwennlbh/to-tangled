@@ -1,5 +1,5 @@
 name: Push to tangled.org
-description: Push code to a tangled.sh mirror repository
+description: Push code to a tangled.org mirror repository
 author: Gwenn Le Bihan
 branding:
   icon: activity
@@ -47,5 +47,6 @@ runs:
 
         git remote add tangled git@${{ inputs.knot }}:${{ inputs.repo }}
         git push --mirror tangled
+
 
 
