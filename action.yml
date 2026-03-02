@@ -13,7 +13,7 @@ inputs:
     description: Hostname of the knot to push to
     default: tangled.org
   ssh-key:
-    description: Private SSH key with write access to the tangled.sh repo
+    description: Private SSH key with write access to the tangled.org repo
     required: true
 
 runs:
@@ -47,4 +47,5 @@ runs:
 
         git remote add tangled git@${{ inputs.knot }}:${{ inputs.repo }}
         git push --mirror tangled
+
 
