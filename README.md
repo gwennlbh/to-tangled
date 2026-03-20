@@ -67,7 +67,7 @@ jobs:
   tangle:
     runs-on: ubuntu-latest
     steps:
-      - uses: gwennlbh/to-tangled@v0.4
+      - uses: gwennlbh/to-tangled@v0.5
         with:
           repo: yourself.bsky.social/your-repo
           ssh-key: ${{ secrets.TANGLED_KEY }}
