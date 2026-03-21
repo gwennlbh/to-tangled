@@ -65,6 +65,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   tangle:
