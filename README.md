@@ -63,6 +63,10 @@ on:
   push: {}
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   tangle:
     runs-on: ubuntu-latest
