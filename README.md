@@ -1,12 +1,12 @@
 # to-tangled
-push to a tangled.sh mirror
+push to a tangled.org mirror
 
 ## Inputs
 
 | | | Default value | Example |
 |--|--|--|--|
-| repo | path to the repo (without the leading `@`) | (required) | tangled.sh/core
-| knot | hostname of the tangled knot used | tangled.sh | 
+| repo | path to the repo (without the leading `@`) | (required) | tangled.org/core
+| knot | hostname of the tangled knot used | tangled.org | 
 | ssh-key | contents of a private ssh key that has push access to the repo | (required) | `-----BEGIN OPENSSH PRIVATE KEY-----\n you really thought, huh? \n-----END OPENSSH PRIVATE KEY-----`
 
 ## Quickstart
@@ -23,7 +23,7 @@ If:
 gh secret set TANGLED_KEY < ~/.ssh/id_ed25519
 mkdir -p .github/workflows
 echo -e 'name: Tangle\n\non:\n  push: {}\n  workflow_dispatch: {}\n\njobs:\n  tangle:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: gwennlbh/to-tangled@v0.4\n        with:\n          repo: yourself.bsky.social/your-repo\n          ssh-key: ${{ secrets.TANGLED_KEY }}\n' > .github/workflows/tangle.yml
-# don't forget to change yourself.bsky.social/your-repo to the tangled.sh repo before committing this!!!
+# don't forget to change yourself.bsky.social/your-repo to the tangled.org repo before committing this!!!
 ```
 
 ### Step by step
@@ -52,7 +52,7 @@ cat ~/.ssh/id_ed25519 | clip.exe
 
 Go to your github repo's settings > secrets > actions > repository secrets
 
-2. Create the tangled.sh repo (for now, you have to do it manually beforehand)
+2. Create the tangled.org repo (for now, you have to do it manually beforehand)
 
 3. Just put ~~the fries in the bag~~ this in `.github/workflows/tangle.yml`
 
