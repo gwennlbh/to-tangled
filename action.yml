@@ -40,7 +40,7 @@ runs:
         chmod 600 ~/.ssh/tangled_key
 
         # Configure SSH to use the key for tangled.org
-        echo "Host tangled.org
+        echo "Host ${{ inputs.knot }}
           IdentityFile ~/.ssh/tangled_key" >> ~/.ssh/config
 
         chmod 600 ~/.ssh/config
